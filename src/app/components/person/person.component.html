@@ -1,0 +1,166 @@
+<div class="container text-center mb-4">
+  <h1>Administrar Personas</h1>
+</div>
+
+<div class="row">
+  <div class="col-lg-4 mt-2">
+    <form
+      [formGroup]="formPerson"
+      (ngSubmit)="onSubmit()"
+      autocomplete="off"
+      class="row g-3"
+    >
+      <div class="col-md-6">
+        <label for="names" class="form-label"
+          ><span class="text-danger">*</span> Nombres</label
+        >
+        <input
+          type="text"
+          name="names"
+          formControlName="names"
+          class="form-control"
+          id="names"
+          required
+        />
+        <div
+          *ngIf="names.invalid && (names.dirty || names.touched)"
+          class="form-text text-danger"
+        >
+          <ul>
+            <li>El campo es obligatorio.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="surnames" class="form-label"
+          ><span class="text-danger">*</span> Apellidos</label
+        >
+        <input
+          type="text"
+          name="surnames"
+          formControlName="surnames"
+          class="form-control"
+          id="surnames"
+          required
+        />
+        <div
+          *ngIf="surnames.invalid && (surnames.dirty || surnames.touched)"
+          class="form-text text-danger"
+        >
+          <ul>
+            <li>El campo es obligatorio.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-12">
+        <label for="email" class="form-label"
+          ><span class="text-danger">*</span> Correo</label
+        >
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          name="email"
+          formControlName="email"
+          placeholder="example@redsuelva.com"
+          required
+        />
+        <div
+          *ngIf="email.invalid && (email.dirty || email.touched)"
+          class="form-text text-danger"
+        >
+          <ul>
+            <li>El campo es obligatorio.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-12">
+        <label for="identification" class="form-label"
+          ><span class="text-danger">*</span> Cédula</label
+        >
+        <input
+          type="text"
+          name="identification"
+          formControlName="identification"
+          class="form-control"
+          maxlength="10"
+          minlength="8"
+          id="identification"
+          required
+        />
+        <div
+          *ngIf="
+            identification.invalid &&
+            (identification.dirty || identification.touched)
+          "
+          class="form-text text-danger"
+        >
+          <ul>
+            <li>El campo es obligatorio.</li>
+            <li>Debe tener entre 8 y 10 caracteres.</li>
+            <li>Solo puede contener números.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <label for="birthday" class="form-label"
+          ><span class="text-danger">*</span> Fecha de cumpleaños</label
+        >
+        <input
+          type="date"
+          max="{{ today | date: 'yyyy-MM-dd' }}"
+          class="form-control"
+          name="birthday"
+          id="birthday"
+          formControlName="birthday"
+          required
+        />
+        <div
+          *ngIf="birthday.invalid && (birthday.dirty || birthday.touched)"
+          class="form-text text-danger"
+        >
+          <ul>
+            <li>El campo es obligatorio.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label for="age" class="form-label"
+          ><span class="text-danger">*</span> Edad</label
+        >
+        <input
+          type="number"
+          min="1"
+          value="1"
+          max="150"
+          class="form-control"
+          name="age"
+          formControlName="age"
+          id="age"
+          required
+        />
+        <div
+          *ngIf="age.invalid && (age.dirty || age.touched)"
+          class="form-text text-danger"
+        >
+          <ul>
+            <li>El campo es obligatorio.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-12 text-center">
+        <button
+          [disabled]="formPerson.invalid"
+          type="submit"
+          class="btn btn-primary w-50"
+        >
+          Guardar<i *ngIf="!loading" class="fas fa-save ms-2"></i>
+          <i *ngIf="loading" class="fas fa-spinner fa-spin ms-2"></i>
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="col-lg-8 mt-2">
+    <app-table-person></app-table-person>
+  </div>
+</div>

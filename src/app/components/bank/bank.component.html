@@ -1,0 +1,118 @@
+<div class="container text-center mb-4">
+  <h1>Administrar Bancos</h1>
+</div>
+
+<div class="row">
+  <div class="col-lg-4 mt-2">
+    <form
+      [formGroup]="formBank"
+      (ngSubmit)="onSubmit()"
+      autocomplete="off"
+      class="row g-3"
+    >
+      <div class="col-md-6">
+        <label for="nit" class="form-label"
+          ><span class="text-danger">*</span> NIT</label
+        >
+        <input
+          type="text"
+          formControlName="nit"
+          class="form-control"
+          name="nit"
+          id="nit"
+          required
+        />
+        <div
+          *ngIf="nit.invalid && (nit.dirty || nit.touched)"
+          class="form-text text-danger"
+        >
+          <ul>
+            <li>El campo es obligatorio.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="name" class="form-label"
+          ><span class="text-danger">*</span> Nombre</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          formControlName="name"
+          id="name"
+          required
+        />
+        <div
+          *ngIf="name.invalid && (name.dirty || name.touched)"
+          class="form-text text-danger"
+        >
+          <ul>
+            <li>El campo es obligatorio.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-12">
+        <label for="motto" class="form-label"
+          ><span class="text-danger">*</span> Lema</label
+        >
+        <textarea
+          class="form-control"
+          style="resize: none"
+          id="motto"
+          name="motto"
+          formControlName="motto"
+          maxlength="100"
+          minlength="5"
+          rows="4"
+          aria-label="With textarea"
+          required
+        ></textarea>
+        <div
+          *ngIf="motto.invalid && (motto.dirty || motto.touched)"
+          class="form-text text-danger"
+        >
+          <ul>
+            <li>El campo es obligatorio.</li>
+            <li>Debe tener entre 5 y 100 carácteres.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-12">
+        <label for="register" class="form-label"
+          ><span class="text-danger">*</span> Fecha de registro</label
+        >
+        <input
+          type="date"
+          class="form-control"
+          name="register"
+          formControlName="register"
+          max="{{ today | date: 'yyyy-MM-dd' }}"
+          id="register"
+          required
+        />
+        <div
+          *ngIf="register.invalid && (register.dirty || register.touched)"
+          class="form-text text-danger"
+        >
+          <ul>
+            <li>El campo es obligatorio.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-12 text-center">
+        <button
+          [disabled]="formBank.invalid"
+          type="submit"
+          class="btn btn-primary w-50"
+        >
+          Guardar<i *ngIf="!loading" class="fas fa-save ms-2"></i>
+          <i *ngIf="loading" class="fas fa-spinner fa-spin ms-2"></i>
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="col-lg-8 mt-2">
+    <app-table-bank></app-table-bank>
+  </div>
+</div>

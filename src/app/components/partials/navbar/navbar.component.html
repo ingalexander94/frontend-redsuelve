@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarTogglerDemo03"
+      aria-controls="navbarTogglerDemo03"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a
+      class="navbar-brand"
+      routerLink="/"
+      [routerLinkActiveOptions]="{ exact: true }"
+      routerLinkActive="active"
+      >Redsuelva</a
+    >
+    <div class="collapse navbar-collapse text-center" id="navbarTogglerDemo03">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/"
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLinkActive="active"
+            aria-current="page"
+            >Personas</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/bank"
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLinkActive="active"
+            >Bancos</a
+          >
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="#">Cuentas</a>
+        </li> -->
+      </ul>
+      <div class="d-flex text-white">
+        © 2021 Copyright:
+        <a
+          class="text-white ms-2"
+          target="__blank"
+          href="https://alexanderjs.netlify.com"
+          >Alexander Peñaloza</a
+        >
+      </div>
+    </div>
+  </div>
+</nav>
